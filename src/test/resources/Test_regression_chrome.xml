@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="testNinja Test Suite chrome" parallel="tests"
+	thread-count="2">
+
+	<listeners>
+		<listener
+			class-name="com.qa.tninja.listeners.ExtentReportListener" />
+		<listener
+			class-name="com.qa.tninja.listeners.TestAllureListener" />
+	</listeners>
+
+	<test name="Loginpage Test_chrome_87">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.tninja.test.LoginpageTest" />
+		</classes>
+	</test>
+	<test name="Loginpage Test_chrome_64">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.tninja.test.LoginpageTest" />
+		</classes>
+	</test>
+	<test name="Accountspage Test_chrome_87">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.tninja.test.AccountspageTest" />
+		</classes>
+	</test>
+	<test name="Accountspage Test_chrome_64">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.tninja.test.AccountspageTest" />
+		</classes>
+	</test>
+	<test name="productInfopage Test_chrome_87">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.tninja.test.ProductInfopageTest" />
+		</classes>
+	</test>
+	<test name="productInfopage Test_chrome_64">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.tninja.test.ProductInfopageTest" />
+		</classes>
+	</test>
+	<test name="Registerpage Test_chrome_87">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.tninja.test.RegisterPageTest" />
+		</classes>
+	</test>
+	<test name="Registerpage Test_chrome_64">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.tninja.test.RegisterPageTest" />
+		</classes>
+	</test>
+	<test name="ShoppingCartpage Test_chrome_87">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="87" />
+		<classes>
+			<class name="com.qa.tninja.test.ShoppingcartpageTest" />
+		</classes>
+	</test>
+	<test name="ShoppingCartpage Test_chrome_64">
+		<parameter name="browser" value="chrome" />
+		<parameter name="version" value="64" />
+		<classes>
+			<class name="com.qa.tninja.test.ShoppingcartpageTest" />
+		</classes>
+	</test>
+</suite>

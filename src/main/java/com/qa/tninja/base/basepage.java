@@ -32,7 +32,7 @@ public class basepage {
 
 	public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<WebDriver>();
 
-	public WebDriver init_driver(String browser) {
+	public WebDriver init_driver(String browser,String browserVersion) {
 		System.out.println("The browser name is : " + browser);
 		
 		highlight = prop.getProperty("highlight");
@@ -42,7 +42,7 @@ public class basepage {
 			WebDriverManager.chromedriver().setup();
 			// driver = new ChromeDriver();
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remoteDriver("chrome");
+				init_remoteDriver("chrome", browserVersion);
 			} else {
 				tlDriver.set(new ChromeDriver(optionsManager.getChromeOptions()));
 			}
@@ -51,7 +51,7 @@ public class basepage {
 			WebDriverManager.firefoxdriver().setup();
 			// driver = new FirefoxDriver();
 			if (Boolean.parseBoolean(prop.getProperty("remote"))) {
-				init_remoteDriver("firefox");
+				init_remoteDriver("firefox", browserVersion);
 			} else {
 				tlDriver.set(new FirefoxDriver(optionsManager.getFirefoxOptions()));
 			}
@@ -67,12 +67,16 @@ public class basepage {
 		return getDriver();
 	}
 
-	private void init_remoteDriver(String browser) {
+	private void init_remoteDriver(String browser,String browserVersion) {
 
 		if (browser.equals("chrome")) {
 
 			DesiredCapabilities cap = DesiredCapabilities.chrome();
+			//DesiredCapabilities cap = DesiredCapabilities.chrome();
 			cap.setCapability(ChromeOptions.CAPABILITY, optionsManager.getChromeOptions());
+			cap.setCapability("browserName", "chrome");
+			cap.setCapability("browserVersion", browserVersion);
+			cap.setCapability("enableVNC", true);
 			
 			try {
 				tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), cap));
@@ -83,6 +87,8 @@ public class basepage {
 
 			DesiredCapabilities cap = DesiredCapabilities.firefox();
 			cap.setCapability(FirefoxOptions.FIREFOX_OPTIONS, optionsManager.getFirefoxOptions());
+			cap.setCapability("browserVersion", browserVersion);
+			cap.setCapability("enableVNC", true);
 
 			try {
 				tlDriver.set(new RemoteWebDriver(new URL(prop.getProperty("huburl")), cap));
