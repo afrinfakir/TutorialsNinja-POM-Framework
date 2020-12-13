@@ -10,5 +10,7 @@ public class Storepage {
 
 		this.driver = driver;
 	}
-
+	public void store() {
+		System.out.println("store page ");
+	}
 }
